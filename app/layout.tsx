@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     title: 'Estatein - Discover Your Dream Property',
     description: 'Find your perfect property with Estatein.',
   },
+  icons: {
+    icon: '/estatain-svg.svg',
+  },
 }
 
 export default function RootLayout({
