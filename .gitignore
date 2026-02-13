@@ -15,4 +15,3 @@ tivesmynameAppDataRoamingnpm-cache/
 
 # Ignore pnpm lockfile
 pnpm-lock.yaml
-.npmrc
