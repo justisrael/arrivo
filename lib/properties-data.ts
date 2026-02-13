@@ -1,0 +1,426 @@
+export interface PropertyFees {
+  label: string;
+  value: string;
+  note?: string;
+}
+
+export interface PropertyPricingDetails {
+  additionalFees: PropertyFees[];
+  monthlyCosts: PropertyFees[];
+  initialCosts: PropertyFees[];
+  monthlyExpenses: PropertyFees[];
+}
+
+export interface Property {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  bedrooms: number;
+  bathrooms: number;
+  sqft: string;
+  image: string;
+  caption?: string;
+  location?: string;
+  amenities?: string[];
+  pricingDetails?: PropertyPricingDetails;
+}
+
+export const PROPERTIES: Property[] = [
+  {
+    id: 1,
+    title: 'Seaside Serenity Villa',
+    description: 'Wake up to the soothing melody of waves. This beachfront villa offers stunning 5-bedroom luxury with ocean views and private beach access.',
+    price: '$1,250,000',
+    bedrooms: 5,
+    bathrooms: 4,
+    sqft: '4,500',
+    image: '/images/seaside-serenity-villa.png',
+    caption: 'Coastal Escapes - Where Waves Beckon',
+    location: 'Coastal',
+    amenities: [
+      'Expansive oceanfront terrace for outdoor entertaining',
+      'Gourmet kitchen with top-of-the-line appliances',
+      'Private beach access for morning strolls and sunset views',
+      'Master suite with a spa-inspired bathroom and ocean-facing balcony',
+      'Private garage and ample storage space',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$25,000', note: 'Based on the sale price and local regulations' },
+        { label: 'Legal Fees', value: '$3,000', note: 'Approximate cost for legal services' },
+        { label: 'Home Inspection', value: '$500', note: 'Recommended for due diligence' },
+        { label: 'Property Insurance', value: '$1,200', note: 'Annual cost for insurance' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Consult with your lender' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$1,250', note: 'Approximate monthly property tax' },
+        { label: "Homeowners' Association Fee", value: '$300', note: 'Common area maintenance' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$1,250,000' },
+        { label: 'Additional Fees', value: '$29,700', note: 'Transfer tax, legal, inspection, insurance' },
+        { label: 'Down Payment', value: '$250,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$1,000,000', note: 'If applicable' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$1,250' },
+        { label: "Homeowners' Association Fee", value: '$300' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Based on terms and interest rate' },
+        { label: 'Property Insurance', value: '$100', note: 'Approximate monthly cost' },
+      ],
+    }
+  },
+  {
+    id: 2,
+    title: 'Metropolitan Haven',
+    description: 'Modern apartment in the heart of the city with luxury amenities and gated security. Perfect for urban living with style.',
+    price: '$550,000',
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: '2,800',
+    image: '/images/metropolitan-haven.png',
+    caption: 'City Living - Heart of the Action',
+    location: 'City Center',
+    amenities: [
+      'State-of-the-art fitness center and spa',
+      'Rooftop lounge with panoramic city views',
+      '24/7 concierge and security services',
+      'Underground parking with EV charging stations',
+      'Smart home automation system included',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$11,000', note: 'Estimated at 2% of sale price' },
+        { label: 'Legal Fees', value: '$2,500', note: 'Includes title search and registration' },
+        { label: 'Home Inspection', value: '$450', note: 'Standard condo inspection' },
+        { label: 'Property Insurance', value: '$800', note: 'Annual condo insurance' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Lender specific' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$458', note: 'Based on city tax rates' },
+        { label: "HOA Fee", value: '$450', note: 'Includes water, trash, and amenities' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$550,000' },
+        { label: 'Additional Fees', value: '$14,750', note: 'Tax, legal, inspection, insurance' },
+        { label: 'Down Payment', value: '$110,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$440,000', note: 'Principal amount' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$458' },
+        { label: "HOA Fee", value: '$450' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Dependent on interest rate' },
+        { label: 'Property Insurance', value: '$67', note: 'Monthly premium' },
+      ],
+    }
+  },
+  {
+    id: 3,
+    title: 'Rustic Retreat Cottage',
+    description: 'Charming countryside home perfect for a peaceful getaway with scenic views and cozy fireplace. A true escape from the bustle.',
+    price: '$380,000',
+    bedrooms: 3,
+    bathrooms: 2,
+    sqft: '2,200',
+    image: '/images/rustic-retreat-cuttage.png',
+    caption: 'Rustic Charm - Peaceful Getaway',
+    location: 'Countryside',
+    amenities: [
+      'Stone fireplace in the living room',
+      'Wrap-around porch with valley views',
+      'Large vegetable garden and orchard',
+      'Detached workshop or studio space',
+      'Direct access to hiking trails',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$7,600', note: 'Regional tax rate' },
+        { label: 'Legal Fees', value: '$2,000', note: 'Closing costs' },
+        { label: 'Home Inspection', value: '$600', note: 'Includes septic and well inspection' },
+        { label: 'Property Insurance', value: '$900', note: 'Annual premium' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Consult lender' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$315', note: 'Rural tax rate' },
+        { label: "Community Fee", value: '$0', note: 'No HOA fees' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$380,000' },
+        { label: 'Additional Fees', value: '$11,100', note: 'All closing adjustments' },
+        { label: 'Down Payment', value: '$76,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$304,000', note: 'Loan principal' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$315' },
+        { label: "Maintenance Fund", value: '$200', note: 'Recommended saving for repairs' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Based on mortgage terms' },
+        { label: 'Property Insurance', value: '$75', note: 'Monthly cost' },
+      ],
+    }
+  },
+  {
+    id: 4,
+    title: 'Modern Mountain Estate',
+    description: 'Contemporary mountain home with panoramic views and smart home integration. Luxury meets nature in this architectural masterpiece.',
+    price: '$720,000',
+    bedrooms: 5,
+    bathrooms: 4,
+    sqft: '4,200',
+    image: '/images/metropolitan-haven.png',
+    caption: 'Mountain Highs - Panoramic Views',
+    location: 'Mountains',
+    amenities: [
+      'Floor-to-ceiling windows with mountain views',
+      'Heated floors throughout',
+      'Home theater and entertainment room',
+      'Outdoor hot tub and fire pit',
+      'Ski-in/ski-out access during winter',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$14,400', note: '2% transfer tax' },
+        { label: 'Legal Fees', value: '$3,500', note: 'Complex closing' },
+        { label: 'Home Inspection', value: '$700', note: 'Detailed structural inspection' },
+        { label: 'Property Insurance', value: '$1,500', note: 'Annual mountain home insurance' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Lender fees' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$750', note: 'Estimated monthly tax' },
+        { label: "Resort Fee", value: '$250', note: 'Road maintenance and snow removal' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$720,000' },
+        { label: 'Additional Fees', value: '$20,100', note: 'Closing costs total' },
+        { label: 'Down Payment', value: '$144,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$576,000', note: 'Loan amount' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$750' },
+        { label: "Resort Fee", value: '$250' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Monthly principal & interest' },
+        { label: 'Property Insurance', value: '$125', note: 'Monthly premium' },
+      ],
+    }
+  },
+  {
+    id: 5,
+    title: 'Urban Luxury Penthouse',
+    description: 'Exclusive penthouse with floor-to-ceiling windows and rooftop access. Experience the skyline like never before from this elite residence.',
+    price: '$900,000',
+    bedrooms: 3,
+    bathrooms: 3,
+    sqft: '3,100',
+    image: '/images/rustic-retreat-cuttage.png',
+    caption: 'Urban Luxury - Sky High Living',
+    location: 'Downtown',
+    amenities: [
+      'Private elevator access',
+      'Expansive rooftop terrace with kitchen',
+      'Designer Italian cabinetry',
+      'Integrated smart lighting and sound',
+      'Valet parking service',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$18,000', note: 'City rate' },
+        { label: 'Legal Fees', value: '$4,000', note: 'Corporate closing' },
+        { label: 'Home Inspection', value: '$600', note: 'Comprehensive report' },
+        { label: 'Property Insurance', value: '$2,000', note: 'Annual high-value coverage' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Per lender' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$950', note: 'Monthly city tax' },
+        { label: "Luxury HOA", value: '$800', note: 'Concierge, amenities, maintenance' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$900,000' },
+        { label: 'Additional Fees', value: '$24,600', note: 'All upfront fees' },
+        { label: 'Down Payment', value: '$180,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$720,000', note: 'Financed amount' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$950' },
+        { label: "HOA Fee", value: '$800' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Standard mortgage term' },
+        { label: 'Property Insurance', value: '$167', note: 'Monthly cost' },
+      ],
+    }
+  },
+  {
+    id: 6,
+    title: 'Peaceful Country Haven',
+    description: 'Spacious country estate with gardens and equestrian facilities. Room to breathe and enjoy the quiet life in complete privacy.',
+    price: '$480,000',
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: '3,800',
+    image: '/images/seaside-serenity-villa.png',
+    caption: 'Country Living - Spacious & Green',
+    location: 'Rural',
+    amenities: [
+      '3-stall horse barn and paddock',
+      'Mature fruit trees and landscaping',
+      'Large farmhouse kitchen',
+      'Screened-in sunroom',
+      'Three-car garage with workshop',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$9,600', note: 'Standard 2%' },
+        { label: 'Legal Fees', value: '$2,200', note: 'Transaction fees' },
+        { label: 'Home Inspection', value: '$550', note: 'Include pest inspection' },
+        { label: 'Property Insurance', value: '$1,000', note: 'Annual farm/home policy' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Lender specific' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$400', note: 'Lower rural rate' },
+        { label: "Utility Estimate", value: '$250', note: 'Electric, heating, water' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$480,000' },
+        { label: 'Additional Fees', value: '$13,350', note: 'Closing costs' },
+        { label: 'Down Payment', value: '$96,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$384,000', note: 'Loan principal' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$400' },
+        { label: "Maintenance", value: '$150', note: 'Savings for upkeep' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Monthly P&I' },
+        { label: 'Property Insurance', value: '$83', note: 'Monthly premium' },
+      ],
+    }
+  },
+  {
+    id: 7,
+    title: 'Sunset Beach House',
+    description: 'A beautiful beach house where you can watch the sunset from your balcony. Golden sands and warm breezes await right at your doorstep.',
+    price: '$1,200,000',
+    bedrooms: 6,
+    bathrooms: 5,
+    sqft: '5,000',
+    image: '/images/seaside-serenity-villa.png',
+    caption: 'Beachside Bliss - Golden Sunsets',
+    location: 'Coastal',
+    amenities: [
+      'Private boardwalk to the beach',
+      'Outdoor shower and changing cabana',
+      'Multiple oceanfront decks',
+      'Chef’s kitchen with double islands',
+      'Elevator to all three floors',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$24,000', note: '2% of value' },
+        { label: 'Legal Fees', value: '$3,500', note: 'Conveyancing' },
+        { label: 'Home Inspection', value: '$750', note: 'Includes coastal elements' },
+        { label: 'Property Insurance', value: '$2,500', note: 'Annual flood/storm coverage' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Consult lender' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$1,300', note: 'Coastal tax rate' },
+        { label: "HOA Fee", value: '$150', note: 'Beach maintenance' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$1,200,000' },
+        { label: 'Additional Fees', value: '$30,750', note: 'Tax, legal, & insurance' },
+        { label: 'Down Payment', value: '$240,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$960,000', note: 'Mortgage loan' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$1,300' },
+        { label: "HOA Fee", value: '$150' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Based on prevailing rates' },
+        { label: 'Property Insurance', value: '$208', note: 'Monthly cost' },
+      ],
+    }
+  },
+  {
+    id: 8,
+    title: 'Modern City Loft',
+    description: 'High-tech loft in a refurbished industrial building. Minimalist design and open spaces define this unique urban creative sanctuary.',
+    price: '$420,000',
+    bedrooms: 2,
+    bathrooms: 1,
+    sqft: '1,500',
+    image: '/images/metropolitan-haven.png',
+    caption: 'Industrial Loft - Modern Edge',
+    location: 'Industrial District',
+    amenities: [
+      '18-foot ceilings with exposed beams',
+      'Polished concrete floors',
+      'Huge industrial windows',
+      'Custom floating staircase',
+      'Smart lighting system',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$8,400', note: '2% rate' },
+        { label: 'Legal Fees', value: '$2,000', note: 'Standard closing' },
+        { label: 'Home Inspection', value: '$500', note: 'Loft inspection' },
+        { label: 'Property Insurance', value: '$600', note: 'Annual premium' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Lender fees' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$350', note: 'Monthly estimate' },
+        { label: "Strata Fee", value: '$300', note: 'Building maintenance' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$420,000' },
+        { label: 'Additional Fees', value: '$11,500', note: 'Closing & tax' },
+        { label: 'Down Payment', value: '$84,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$336,000', note: 'Loan amount' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$350' },
+        { label: "Strata Fee", value: '$300' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Monthly payment' },
+        { label: 'Property Insurance', value: '$50', note: 'Monthly cost' },
+      ],
+    }
+  },
+  {
+    id: 9,
+    title: 'Green Valley Villa',
+    description: 'Sustainable villa with solar panels and organic gardens. Live in harmony with nature in this eco-conscious, energy-efficient home.',
+    price: '$510,000',
+    bedrooms: 4,
+    bathrooms: 3,
+    sqft: '3,200',
+    image: '/images/seaside-serenity-villa.png',
+    caption: 'Green Valley - Sustainable Life',
+    location: 'Valley',
+    amenities: [
+      '5kW solar panel array',
+      'Rainwater harvesting system',
+      'Passive solar design',
+      'Organic vegetable beds',
+      'EV charging ready garage',
+    ],
+    pricingDetails: {
+      additionalFees: [
+        { label: 'Property Transfer Tax', value: '$10,200', note: '2% tax' },
+        { label: 'Legal Fees', value: '$2,200', note: 'Closing services' },
+        { label: 'Home Inspection', value: '$600', note: 'Includes energy audit' },
+        { label: 'Property Insurance', value: '$900', note: 'Annual eco-home policy' },
+        { label: 'Mortgage Fees', value: 'Varies', note: 'Green mortgage options' },
+      ],
+      monthlyCosts: [
+        { label: 'Property Taxes', value: '$425', note: 'Estimated tax' },
+        { label: "Green Community Fee", value: '$100', note: 'Shared garden maintenance' },
+      ],
+      initialCosts: [
+        { label: 'Listing Price', value: '$510,000' },
+        { label: 'Additional Fees', value: '$13,900', note: 'Closing costs' },
+        { label: 'Down Payment', value: '$102,000', note: '20%' },
+        { label: 'Mortgage Amount', value: '$408,000', note: 'Principal amount' },
+      ],
+      monthlyExpenses: [
+        { label: 'Property Taxes', value: '$425' },
+        { label: "Green Community Fee", value: '$100' },
+        { label: 'Mortgage Payment', value: 'Varies', note: 'Based on rates' },
+        { label: 'Property Insurance', value: '$75', note: 'Monthly premium' },
+      ],
+    }
+  },
+];
