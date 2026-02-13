@@ -12,3 +12,7 @@ node_modules/
 # Ignore npm cache directories
 npm-cache/
 tivesmynameAppDataRoamingnpm-cache/
+
+# Ignore pnpm lockfile
+pnpm-lock.yaml
+.npmrc
