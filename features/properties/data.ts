@@ -4,6 +4,8 @@ export const PROPERTIES: Property[] = [
     {
         id: 1,
         title: 'Seaside Serenity Villa',
+        slug: 'seaside-serenity-villa',
+
         description: 'Wake up to the soothing melody of waves. This beachfront villa offers stunning 5-bedroom luxury with ocean views and private beach access.',
         price: '$1,250,000',
         numericPrice: 1250000,
@@ -52,6 +54,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 2,
         title: 'Metropolitan Haven',
+        slug: 'metropolitan-haven',
         description: 'Modern apartment in the heart of the city with luxury amenities and gated security. Perfect for urban living with style.',
         price: '$550,000',
         numericPrice: 550000,
@@ -100,6 +103,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 3,
         title: 'Rustic Retreat Cottage',
+        slug: 'rustic-retreat-cottage',
         description: 'Charming countryside home perfect for a peaceful getaway with scenic views and cozy fireplace. A true escape from the bustle.',
         price: '$380,000',
         numericPrice: 380000,
@@ -148,6 +152,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 4,
         title: 'Modern Mountain Estate',
+        slug: 'modern-mountain-estate',
         description: 'Contemporary mountain home with panoramic views and smart home integration. Luxury meets nature in this architectural masterpiece.',
         price: '$720,000',
         numericPrice: 720000,
@@ -196,6 +201,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 5,
         title: 'Urban Luxury Penthouse',
+        slug: 'urban-luxury-penthouse',
         description: 'Exclusive penthouse with floor-to-ceiling windows and rooftop access. Experience the skyline like never before from this elite residence.',
         price: '$900,000',
         numericPrice: 900000,
@@ -244,6 +250,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 6,
         title: 'Peaceful Country Haven',
+        slug: 'peaceful-country-haven',
         description: 'Spacious country estate with gardens and equestrian facilities. Room to breathe and enjoy the quiet life in complete privacy.',
         price: '$480,000',
         numericPrice: 480000,
@@ -292,6 +299,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 7,
         title: 'Sunset Beach House',
+        slug: 'sunset-beach-house',
         description: 'A beautiful beach house where you can watch the sunset from your balcony. Golden sands and warm breezes await right at your doorstep.',
         price: '$1,200,000',
         numericPrice: 1200000,
@@ -340,6 +348,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 8,
         title: 'Modern City Loft',
+        slug: 'modern-city-loft',
         description: 'High-tech loft in a refurbished industrial building. Minimalist design and open spaces define this unique urban creative sanctuary.',
         price: '$420,000',
         numericPrice: 420000,
@@ -388,6 +397,7 @@ export const PROPERTIES: Property[] = [
     {
         id: 9,
         title: 'Green Valley Villa',
+        slug: 'green-valley-villa',
         description: 'Sustainable villa with solar panels and organic gardens. Live in harmony with nature in this eco-conscious, energy-efficient home.',
         price: '$510,000',
         numericPrice: 510000,
@@ -434,6 +444,8 @@ export const PROPERTIES: Property[] = [
         }
     },
 ];
+
+
 
 /** Extract unique locations from property data */
 export function getUniqueLocations(): string[] {

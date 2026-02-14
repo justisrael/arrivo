@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import PropertyCard from './PropertyCard';
 import PropertiesPagination from './PropertiesPagination';
-import { Property } from '@/lib/properties-data';
+import { Property } from '@/features/properties';
 
 interface PropertiesListProps {
     initialProperties: Property[];
@@ -15,8 +15,10 @@ export default function PropertiesList({ initialProperties }: PropertiesListProp
     const totalPages = Math.ceil(initialProperties.length / itemsPerPage);
 
     const startIndex = (currentPage - 1) * itemsPerPage;
-    const visibleProperties = initialProperties.slice(startIndex, startIndex + itemsPerPage);
-
+    const visibleProperties = useMemo(() => {
+        return initialProperties.slice(startIndex, startIndex + itemsPerPage);
+    }, [initialProperties, startIndex, itemsPerPage]);
+    console.log(visibleProperties);
     return (
         <section className="bg-background z-10 pt-48 pb-16 px-4 md:px-8">
             <div className="max-w-7xl mx-auto">
@@ -41,7 +43,8 @@ export default function PropertiesList({ initialProperties }: PropertiesListProp
                 </div>
 
                 {/* Property Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
                     {visibleProperties.map((property) => (
                         <PropertyCard key={property.id} {...property} />
                     ))}

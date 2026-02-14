@@ -13,6 +13,7 @@ export interface PropertyPricingDetails {
 
 export interface Property {
     id: number;
+    slug: string;
     title: string;
     description: string;
     price: string;

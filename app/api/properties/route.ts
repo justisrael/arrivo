@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PROPERTIES } from '@/lib/properties-data';
+import { PROPERTIES } from '@/features/properties';
 
 export async function GET() {
     try {

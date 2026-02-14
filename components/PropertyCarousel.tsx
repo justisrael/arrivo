@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import PropertyCard from './PropertyCard';
 
-import { Property } from '@/lib/properties-data';
+import { Property } from '@/features/properties';
 
 interface PropertyCarouselProps {
   properties: Property[];
@@ -73,9 +73,6 @@ export default function PropertyCarousel({ properties }: PropertyCarouselProps) 
             <div
               ref={carouselRef}
               className="flex transition-transform duration-500 ease-out"
-              style={{
-                width: `${(properties.length / itemsPerView) * 100}%`,
-              }}
             >
               {properties.map((property) => (
                 <div

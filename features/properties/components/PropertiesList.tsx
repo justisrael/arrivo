@@ -23,6 +23,7 @@ export default function PropertiesList({ properties, hasActiveFilters, onResetFi
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const visibleProperties = properties.slice(startIndex, startIndex + itemsPerPage);
+    
 
     return (
         <section className="bg-background z-10 pt-48 pb-16 px-4 md:px-8" aria-label="Property listings">

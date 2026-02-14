@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { PropertyPricingDetails } from '@/lib/properties-data';
+import { memo, useMemo } from 'react';
+import { Property, PropertyPricingDetails } from '@/features/properties';
 
 interface PricingSectionProps {
     title: string;
@@ -10,7 +11,7 @@ interface PricingSectionProps {
     }[];
 }
 
-function PricingCard({ title, items }: PricingSectionProps) {
+const PricingCard = memo(function PricingCard({ title, items }: PricingSectionProps) {
     return (
         <div className="border border-zinc-800 rounded-2xl p-8 md:p-10 mb-8">
             <div className="flex items-center justify-between mb-8 pb-8 border-b border-zinc-900">
@@ -37,7 +38,7 @@ function PricingCard({ title, items }: PricingSectionProps) {
             </div>
         </div>
     );
-}
+});
 
 interface PropertyPricingProps {
     propertyName: string;
@@ -47,32 +48,32 @@ interface PropertyPricingProps {
 
 export default function PropertyPricing({ propertyName, listingPrice, pricingDetails }: PropertyPricingProps) {
     // Fallback values if pricingDetails is not provided
-    const additionalFees = pricingDetails?.additionalFees || [
+    const additionalFees = useMemo(() => pricingDetails?.additionalFees || [
         { label: 'Property Transfer Tax', value: '$25,000', note: 'Based on the sale price and local regulations' },
         { label: 'Legal Fees', value: '$3,000', note: 'Approximate cost for legal services, including title transfer' },
         { label: 'Home Inspection', value: '$500', note: 'Recommended for due diligence' },
         { label: 'Property Insurance', value: '$1,200', note: 'Annual cost for comprehensive property insurance' },
         { label: 'Mortgage Fees', value: 'Varies', note: 'If applicable, consult with your lender for specific details' },
-    ];
+    ], [pricingDetails]);
 
-    const monthlyCosts = pricingDetails?.monthlyCosts || [
+    const monthlyCosts = useMemo(() => pricingDetails?.monthlyCosts || [
         { label: 'Property Taxes', value: '$1,250', note: 'Approximate monthly property tax based on the sale price and local rates' },
         { label: "Homeowners' Association Fee", value: '$300', note: 'Monthly fee for common area maintenance and security' },
-    ];
+    ], [pricingDetails]);
 
-    const initialCosts = pricingDetails?.initialCosts || [
+    const initialCosts = useMemo(() => pricingDetails?.initialCosts || [
         { label: 'Listing Price', value: listingPrice },
         { label: 'Additional Fees', value: '$29,700', note: 'Property transfer tax, legal fees, inspection, insurance' },
         { label: 'Down Payment', value: '$250,000', note: '20%' },
         { label: 'Mortgage Amount', value: '$1,000,000', note: 'If applicable' },
-    ];
+    ], [pricingDetails, listingPrice]);
 
-    const monthlyExpenses = pricingDetails?.monthlyExpenses || [
+    const monthlyExpenses = useMemo(() => pricingDetails?.monthlyExpenses || [
         { label: 'Property Taxes', value: '$1,250' },
         { label: "Homeowners' Association Fee", value: '$300' },
         { label: 'Mortgage Payment', value: 'Varies based on terms and interest rate', note: 'If applicable' },
         { label: 'Property Insurance', value: '$100', note: 'Approximate monthly cost' },
-    ];
+    ], [pricingDetails]);
 
     return (
         <div className="my-20">

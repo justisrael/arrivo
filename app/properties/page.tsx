@@ -2,9 +2,13 @@
 
 import { Header } from '@/components/layout';
 import { Footer } from '@/components/layout';
+import dynamic from 'next/dynamic';
 import PropertiesHero from '@/features/properties/components/PropertiesHero';
-import PropertiesList from '@/features/properties/components/PropertiesList';
-import { FAQ, CTA, ContactForm } from '@/components/shared';
+
+const PropertiesList = dynamic(() => import('@/features/properties/components/PropertiesList'));
+const FAQ = dynamic(() => import('@/components/shared').then(mod => mod.FAQ));
+const CTA = dynamic(() => import('@/components/shared').then(mod => mod.CTA));
+const ContactForm = dynamic(() => import('@/components/shared').then(mod => mod.ContactForm));
 import { FAQS } from '@/lib/faq-data';
 import { PROPERTIES, usePropertyFilters } from '@/features/properties';
 

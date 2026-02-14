@@ -1,10 +1,13 @@
+import dynamic from 'next/dynamic';
 import { Header } from '@/components/layout';
 import { Footer } from '@/components/layout';
-import { FAQ, CTA } from '@/components/shared';
-import PropertyGallery from '@/components/PropertyGallery';
-import PropertyDescription from '@/components/PropertyDescription';
-import PropertyInquiryForm from '@/components/PropertyInquiryForm';
-import PropertyPricing from '@/components/PropertyPricing';
+
+const FAQ = dynamic(() => import('@/components/shared').then(mod => mod.FAQ));
+const CTA = dynamic(() => import('@/components/shared').then(mod => mod.CTA));
+const PropertyGallery = dynamic(() => import('@/components/PropertyGallery'));
+const PropertyDescription = dynamic(() => import('@/components/PropertyDescription'));
+const PropertyInquiryForm = dynamic(() => import('@/components/PropertyInquiryForm'));
+const PropertyPricing = dynamic(() => import('@/components/PropertyPricing'));
 import { FAQS } from '@/lib/faq-data';
 import { MapPin } from 'lucide-react';
 import { PROPERTIES } from '@/features/properties';
@@ -14,21 +17,21 @@ import { getPropertyJsonLd } from '@/lib/seo';
 
 interface PageProps {
     params: Promise<{
-        id: string;
+        slug: string;
     }>;
 }
 
 // SSG: Generate static paths for all properties
 export async function generateStaticParams() {
     return PROPERTIES.map((property) => ({
-        id: property.id.toString(),
+        slug: property.slug.toString(),
     }));
 }
 
 // Dynamic metadata per property
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { id } = await params;
-    const property = PROPERTIES.find((p) => p.id === parseInt(id));
+    const { slug } = await params;
+    const property = PROPERTIES.find((p) => p.slug === (slug));
     if (!property) return { title: 'Property Not Found' };
 
     return {
@@ -57,9 +60,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function PropertyPage({ params }: PageProps) {
-    const { id } = await params;
-    const propertyId = parseInt(id);
-    const property = PROPERTIES.find((p) => p.id === propertyId);
+    const { slug } = await params;
+    const property = PROPERTIES.find((p) => p.slug === (slug));
 
     if (!property) {
         notFound();

@@ -1,13 +1,17 @@
 import { Header } from '@/components/layout';
 import { Footer } from '@/components/layout';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
-import PropertyCarousel from '@/components/PropertyCarousel';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
-import { FAQ, CTA } from '@/components/shared';
+
+const Features = dynamic(() => import('@/components/Features'));
+const PropertyCarousel = dynamic(() => import('@/components/PropertyCarousel'));
+const TestimonialCarousel = dynamic(() => import('@/components/TestimonialCarousel'));
+const FAQ = dynamic(() => import('@/components/shared').then(mod => mod.FAQ));
+const CTA = dynamic(() => import('@/components/shared').then(mod => mod.CTA));
 import { FAQS } from '@/lib/faq-data';
 import { getMetadata, getWebSiteJsonLd } from '@/lib/seo';
 import type { Metadata } from 'next';
+import { PROPERTIES } from '@/features/properties';
 
 export const metadata: Metadata = getMetadata(
   'Home',
@@ -15,38 +19,7 @@ export const metadata: Metadata = getMetadata(
   '/'
 );
 
-const properties = [
-  {
-    id: 1,
-    title: 'Seaside Serenity Villa',
-    description: 'A stunning 5-bedroom villa with ocean views and private beach access.',
-    price: '$650,000',
-    bedrooms: 4,
-    bathrooms: 3,
-    sqft: '3,500',
-    image: '/images/seaside-serenity-villa.png',
-  },
-  {
-    id: 2,
-    title: 'Metropolitan Haven',
-    description: 'Modern apartment in the heart of the city with luxury amenities and gated security.',
-    price: '$550,000',
-    bedrooms: 3,
-    bathrooms: 2,
-    sqft: '2,800',
-    image: '/images/metropolitan-haven.png',
-  },
-  {
-    id: 3,
-    title: 'Rustic Retreat Cottage',
-    description: 'Charming countryside home perfect for a peaceful getaway with scenic views.',
-    price: '$380,000',
-    bedrooms: 3,
-    bathrooms: 2,
-    sqft: '2,200',
-    image: '/images/rustic-retreat-cuttage.png',
-  },
-];
+
 
 const testimonials = [
   {
@@ -84,7 +57,7 @@ export default function HomePage() {
       <main id="main-content">
         <Hero />
         <Features />
-        <PropertyCarousel properties={properties} />
+        <PropertyCarousel properties={PROPERTIES} />
         <TestimonialCarousel testimonials={testimonials} />
         <FAQ faqs={FAQS} />
         <CTA />

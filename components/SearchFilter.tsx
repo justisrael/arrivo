@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { Search } from 'lucide-react';
 
 interface SearchFilterProps {
   onSearch?: (filters: any) => void;
 }
 
-export default function SearchFilter({ onSearch }: SearchFilterProps) {
+const SearchFilter = memo(function SearchFilter({ onSearch }: SearchFilterProps) {
   const [filters, setFilters] = useState({
     location: '',
     propertyType: '',
@@ -16,11 +16,11 @@ export default function SearchFilter({ onSearch }: SearchFilterProps) {
     buildYear: '',
   });
 
-  const handleFilterChange = (key: string, value: string) => {
+  const handleFilterChange = useCallback((key: string, value: string) => {
     const updated = { ...filters, [key]: value };
     setFilters(updated);
     onSearch?.(updated);
-  };
+  }, [filters, onSearch]);
 
   return (
     <div className="w-full bg-slate-900 border border-slate-800 rounded-lg p-6">
@@ -114,4 +114,6 @@ export default function SearchFilter({ onSearch }: SearchFilterProps) {
       </div>
     </div>
   );
-}
+});
+
+export default SearchFilter;
